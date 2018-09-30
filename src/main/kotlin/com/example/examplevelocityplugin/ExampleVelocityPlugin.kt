@@ -1,4 +1,4 @@
-package com.example
+package com.example.examplevelocityplugin
 
 import com.google.common.eventbus.Subscribe
 import com.google.inject.Inject
