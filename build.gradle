@@ -1,0 +1,29 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.2.71' // https://kotlinlang.org/docs/reference/using-gradle.html
+    id "org.jetbrains.kotlin.kapt" version "1.2.71" // this plugin is needed for processing annotations, such as @Plugin
+    id "com.github.johnrengelman.shadow" version "4.0.0" // https://github.com/johnrengelman/shadow
+}
+
+group 'com.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven { url = "https://repo.velocitypowered.com/snapshots/" } // velocity repo
+}
+
+dependencies {
+    // https://kotlinlang.org/docs/reference/using-gradle.html#configuring-dependencies
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8" // compile so shadow knows to include it in the jar
+    compileOnly 'com.velocitypowered:velocity-api:1.0-SNAPSHOT' // compileOnly so shadow knows not to shade it in
+    kapt 'com.velocitypowered:velocity-api:1.0-SNAPSHOT' // kapt to process annotations from this lib
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+
+build.dependsOn shadowJar // have it so `gradle build` builds the shadow jar
