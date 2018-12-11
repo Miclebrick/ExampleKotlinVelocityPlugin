@@ -12,6 +12,6 @@ git clone https://github.com/Miclebrick/ExampleKotlinVelocityPlugin.git
 
 ### Linux
 ```
-git clone https://github.com/Miclebrick/ExampleKotlinVelocityPlugin/edit/master/README.md
+git clone https://github.com/Miclebrick/ExampleKotlinVelocityPlugin.git
 ./gradlew build
 ```
